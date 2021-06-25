@@ -1,0 +1,40 @@
+#Insertion Sort
+
+Input: 
+	A sequence of n numbers {a1, a2, a3, ...,an}
+Output: 
+	A permuation of n numbers {b1, b2, b3, ...,bn} of input sequence such that 
+	b1 <= b2 <= b3 ... <= bn
+
+##Pseudo code:
+
+INSERTION_SORT(A) // A[1..n] is a 1-indexed sequence
+	for j = 2 to A.length
+		key = A[j]
+		// Insert A[j] into sorted sequence A[1..j-1]
+		i = j - 1
+		while i > 0 and A[i] > key
+			A[i+1] = A[i]
+			i = i - 1
+		// Loop ends when we get an element that is not greater than "key"
+		// Or all elements are larger than "key" and we reach position 0 (out of sequence)
+		// Loop also copies all elements which were greater to "key" to next index
+		// Now we just copy key to the it's correct positon
+		A[i+1] = key // (since i was either smaller than "key" or out of sequence)
+
+
+
+##Loop invariant: the subarray A[1..j-1] is the sorted sequence. 
+
+Init: 	When j = 2, the subarray A[1..1] that is A[1] is trivially sorted.
+
+Mnte: 	For loop moves A[j-x], ..., A[j-2], A[j-1] to one position 
+		right, where A[j-x] is the smallest larger element than 
+		key in A[1..j]. Key is inserted into j-x position
+		All the elements in A[1..j] should be in sorted sequence now.
+		The loop invariant is preserved when next iteration starts when j increments 
+
+Term:	Loop terminates at j > A.length that is j = n + 1
+		Acc to loop invariant, A[1..j-1] should be sorted 
+		i.e. A[1..(n+1)-1] is sorted => A[1..n] is sorted
+		Hence the algorithm is correct.
