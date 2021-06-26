@@ -1,4 +1,4 @@
-# Insertion sort implement using a 1 indexed array
+# Insertion sort implement using a 0 indexed mutable sequence
 def insertion_sort(A):
 	for j in range(len(A)):
 		key = A[j]
@@ -12,6 +12,8 @@ def insertion_sort(A):
 		# Loop also copies all elements which were greater to "key" to one index on right
 		# Now we just copy key to the it's correct positon A[i+1] = key
 		A[i+1] = key
+		
+# simple test
 A = [9, 2, 1, 5, 2, 0]
 insertion_sort(A)
 print(A)

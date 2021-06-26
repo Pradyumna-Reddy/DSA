@@ -1,0 +1,23 @@
+#Linear search
+
+Input: A sequence of n numbers A = {a1, a2, a3, ..., an} and a value key
+
+Output: An index i such that key = A[i], or NIL incase key doesn't appear in A
+
+##Pseudo code:
+
+LINEAR_SEARCH(A, key) // A[1..n] is a 1-indexed sequence
+	for i = 1 to A.length
+		if A[i] == key
+			return i
+	// For loop didn't return means, key didn't appear in A
+	return NIL
+
+##Loop Invariant: At the start of each iteration i, sub sequence A[1..i-1] contains different elements other than key
+
+Init: At the start, the sub sequence is empty ( i = 1 ) and trivially doesn't contain the key
+
+Mtnc: In the loop, we compare the key with A[i], if not equal, while A[1..i] doesn't contain key and the loop invariant is maintained when i is incremented for next iteration. If equal, we return the i which is the correct result
+
+Term: Loop terminates when i > A.length, i.e. i = n + 1 which according to loop invariant means that A[1..n] (the whole sequence) doesn't contain the key. We return NIL implicating the sequence doesn't contain the key.
+Hence the algorithm is correct.
