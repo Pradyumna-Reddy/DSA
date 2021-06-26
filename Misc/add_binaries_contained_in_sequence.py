@@ -19,5 +19,5 @@ B = [0, 1, 1, 0] #6
 print(add_binaries_contained_in_sequence(A,B)) #18 [1, 0, 0, 1, 0]
 
 # You can use another method which is similar, except that it looks whether the carry is 0 or 1
-# Depending on the carry, we can get the sum and reminder
+# Depending on the carry, we can get the sum and carry
 # But other method uses conditionals
