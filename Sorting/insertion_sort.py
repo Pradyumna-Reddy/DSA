@@ -11,7 +11,7 @@ def insertion_sort(A):
 		# Or all elements are larger than "key" and we reach position -1 (out of sequence)
 		# Loop also copies all elements which were greater to "key" to one index on right
 		# Now we just copy key to the it's correct positon A[i+1] = key
-
+		A[i+1] = key
 A = [9, 2, 1, 5, 2, 0]
 insertion_sort(A)
 print(A)
