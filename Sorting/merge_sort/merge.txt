@@ -1,0 +1,59 @@
+#Merge
+
+Input: 
+	A sequence A[1..n] with Subsequences with elements of indices, p..q and q+1..r sorted repectively
+Output: 
+	Subsequence p..r in a sorted order
+
+##Pseudo code:
+
+MERGE(A, p, q, r)
+	// We are using a placeholder for end of each subsequences
+	// inorder to avoid checking if a subsequence is empty, everytime
+	// Hence we copy them into other sub temp. sequences
+	n1 = q - p + 1
+	n2 = r - p
+	Let L[1..n1+1] and R[1..n2+1] be two temp sequences
+	for i = 1 to n1
+		L[i] = A[p+i-1]
+	L[n1+1] = Infinity
+	for j = 1 to n2
+		R[i] = A[q+i]
+	R[n2+1] = Infinity
+	i = 1
+	j = 1
+	for k = p to r // MAIN LOOP
+		if L[i] > R[j]
+			A[k] = R[j]
+			j = j + 1 
+		else
+			A[k] = L[i]
+			i = i + 1
+
+##Loop variant:
+	At the start of each iteration of loop, sub sequence A[p..k-1]
+	contains k-p smallest elements of L[1..n1+1] and R[1..n2+1] in
+	sorted order. L[i] and R[j] are the smallest elements of L and R repsectively, that are not yet copied.
+
+Init: 
+	Before the start of the for loop, A[p..k-1] is empty and contains 
+	k - p =  0 smallest elements of L and R in sorted order trivially.
+	L and R are individually sorted subsequences,hence L[0] and R[0]
+	(i = j = 0) are the smallest elements of L and R, not yet copied.
+
+Mtnc:
+	In each iteration of loop, we compare the smallest elements of both 
+	L[i..n1+1] and R[j..n2+1], that are at i and j respectively and assign this smallest value to A[k].
+	Let's assume L[i] is the smallest value, not yet copied.
+	A[p..k-1] contain smallest k-p smallest elements.
+	After copy A[p..k] contains smallest k-p+1 smallest elements
+	And i is incremented and k when next iter. starts, this maintains the 
+	loop invaraint
+
+Term:
+	Loop terminates at k = r+1, according to loop invaraint
+	the sub sequence A[p..k-1] => A[p..r] contains r+p+1 smallest elements of both 
+	L[1..n1+1] and R[1..n2+1] in sorted order. L[n1+1] and R[n2+1] are the smallest elements
+	of each sequence not yet copied. That are Infinities. Hence we copied all the relevant elements in a sorted order.
+	Hence the algorithm is correct.
+

@@ -1,0 +1,17 @@
+#Merge sort:
+
+Input: 
+	A sequence "A", p and r indices of A 
+
+Output: 
+	A[p..r] subsequence sorted in place  
+
+##Pseudo code:
+
+MERGE_SORT(A, p, r)
+	if p < r
+		q = (p + r)/2 // here is integer division (floor of the divsion)
+		MERGE_SORT(A, p, q)
+		MERGE_SORT(A, q+1, r)
+		MERGE(A, p, q, r)
+

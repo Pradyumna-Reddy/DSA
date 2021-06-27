@@ -22,10 +22,13 @@ Loop Invariant:
 	At the start of each iteration sub sequence A[1..i-1] is sorted and contains i-1 smallest elements
 
 
-Init: 	Before the start of outer for loop, the sub sequence A[1..0] is empty 			sequence and trivially statisfies loop invaraint
+Init:	Before the start of outer for loop, the sub sequence A[1..0] is
+		empty sequence and trivially statisfies loop invaraint 
 
-Mtnc:	Before the start of each loop we have i-1 smallest elements of A in 			sorted order. We search for smallest element in A[i..n] and swap it 
-		with element at ith position. Making A[1..i] sub sequence contain i smallest elements and the loop invaraint is maintained when next iteration is started.
+Mtnc:	Before the start of each loop we have i-1 smallest elements of A in sorted order. 
+		We search for smallest element in A[i..n] and swap it 
+		with element at ith position. Making A[1..i] sub sequence contain i smallest elements 
+		and the loop invaraint is maintained when next iteration is started.
 
 Term: 	The loop terminated when i > A.length - 1, that is i = n. According to 
 		loop invariant, A[1..n-1] sub sequence contains n-1 smallest elements
