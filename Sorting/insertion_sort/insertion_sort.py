@@ -1,6 +1,6 @@
 # Insertion sort implement using a 0 indexed mutable sequence
 def insertion_sort(A):
-	for j in range(len(A)):
+	for j in range(1, len(A)):
 		key = A[j]
 		# Insert A[j] into sorted sequence A[0..j-1]
 		i = j - 1		

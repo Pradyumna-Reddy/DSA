@@ -1,0 +1,33 @@
+#Selection sort
+
+Input: 
+	A sequence of n numbers {a1, a2, a3, ...,an}
+Output: 
+	A permuation of n numbers {b1, b2, b3, ...,bn} of input sequence such that 
+	b1 <= b2 <= b3 ... <= bn
+
+##Pseudo code:
+
+SELECTION_SORT(A):
+	for i = 1 to A.length - 1
+		// Assume current element is min element
+		min_index = i
+		// If a smaller number exists than current element, mark it smaller
+		for j = i + 1 to A.length
+			if A[j] < A[min_index]
+				min_index = j
+		swap(A[i], A[j])
+
+Loop Invariant:
+	At the start of each iteration sub sequence A[1..i-1] is sorted and contains i-1 smallest elements
+
+
+Init: 	Before the start of outer for loop, the sub sequence A[1..0] is empty 			sequence and trivially statisfies loop invaraint
+
+Mtnc:	Before the start of each loop we have i-1 smallest elements of A in 			sorted order. We search for smallest element in A[i..n] and swap it 
+		with element at ith position. Making A[1..i] sub sequence contain i smallest elements and the loop invaraint is maintained when next iteration is started.
+
+Term: 	The loop terminated when i > A.length - 1, that is i = n. According to 
+		loop invariant, A[1..n-1] sub sequence contains n-1 smallest elements
+		in sorted order. That means the whole sequence is already sorted since 
+		A[n] is greater than the rest already.
