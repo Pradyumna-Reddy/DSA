@@ -1,0 +1,66 @@
+#Merge without sentinels (Infinities)
+
+Input: 
+	A sequence A[1..n] with Subsequences with elements of indices, p..q and q+1..r sorted repectively
+Output: 
+	Subsequence p..r in a sorted order
+
+##Pseudo code:
+
+MERGE(A, p, q, r)
+	n1 = q - p + 1
+	n2 = r - p
+	Let L[1..n1] and R[1..n2] be two temp sequences
+	for i = 1 to n1
+		L[i] = A[p+i-1]
+	for j = 1 to n2
+		R[i] = A[q+i]
+	i = 1
+	j = 1
+	for k = p to r // MAIN LOOP
+		if i > n1
+			A[k] = R[j]
+			j = j + 1
+		elif j > n2
+			A[k] = L[i]
+			i = i + 1
+		elif L[i] > R[j]
+			A[k] = R[j]
+			j = j + 1 
+		else
+			A[k] = L[i]
+			i = i + 1
+
+##Loop invariant:
+	At the start of each iteration of loop, sub sequence A[p..k-1]
+	contains k-p smallest elements of L[1..n1] and R[1..n2] in
+	sorted order. Either, L[i] has the smallest element of L, that is not yet copied
+	or i > n1. Same with R[j], has the smallest element of R, that is not yet copied
+	or j > n2.
+
+Init:
+	Before the start of the for loop, A[p..k-1] is empty and contains 
+	k - p =  0 smallest elements of L and R in sorted order trivially.
+	L and R are individually sorted subsequences,hence L[0] and R[0]
+	(i = j = 0) are the smallest elements of L and R, not yet copied.
+
+Mtnc:
+	Case 1: When both a L and R contains elements not copied yet...
+			In each iteration of loop, we compare the smallest elements of both 
+			L[i..n1] and R[j..n2], that are at i and j respectively and assign this smallest value to A[k].
+			Let's assume L[i] is the smallest value, not yet copied.
+			A[p..k-1] contain smallest k-p smallest elements.
+			After copy A[p..k] contains smallest k-p+1 smallest elements
+			And i is incremented and k when next iter. starts, this maintains the 
+			loop invaraint
+	Case 2: When only one of L or R has all elements copied. Let's assume L has all
+			elements copied, that means i > n1. Since the R is already in sorted order,
+			we directly copy R[j] to A[k] and after copy, A[p..k] contains k-p smallest elements.
+			j is incremented and k is incremented when next iter starts maintaining the Loop invariant.
+
+Term:
+	Loop terminates at k = r+1, according to loop invaraint,
+	i > n1 and j > n2. That means all elements are copied.
+	the sub sequence A[p..k-1] => A[p..r] contains r+p+1 smallest elements of both 
+	L[1..n1] and R[1..n2] in sorted order.
+	Hence the algorithm is correct.

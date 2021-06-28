@@ -20,7 +20,7 @@ def merge(A, p, q, r):
 			A[k] = L[i]
 			i = i + 1
 
-#Simple merge test
-A = [0, 1, 4, 10, 2, 3, 9, 18] # p = 0, q = 3  and r = 7
-merge(A, 0, 3, 7)
-print(A) # [0, 1, 2, 3, 4, 9, 10, 18]
+# # Simple merge test
+# A = [0, 1, 4, 10, 2, 3, 9, 18] # p = 0, q = 3  and r = 7, remember that p..q and q+1..r must be sorted
+# merge(A, 0, 3, 7)
+# print(A) # [0, 1, 2, 3, 4, 9, 10, 18]

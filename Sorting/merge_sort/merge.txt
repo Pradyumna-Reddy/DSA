@@ -8,7 +8,7 @@ Output:
 ##Pseudo code:
 
 MERGE(A, p, q, r)
-	// We are using a placeholder for end of each subsequences
+	// We are using a placeholder sentinel for end of each subsequences
 	// inorder to avoid checking if a subsequence is empty, everytime
 	// Hence we copy them into other sub temp. sequences
 	n1 = q - p + 1
@@ -30,10 +30,10 @@ MERGE(A, p, q, r)
 			A[k] = L[i]
 			i = i + 1
 
-##Loop variant:
+##Loop invariant:
 	At the start of each iteration of loop, sub sequence A[p..k-1]
 	contains k-p smallest elements of L[1..n1+1] and R[1..n2+1] in
-	sorted order. L[i] and R[j] are the smallest elements of L and R repsectively, that are not yet copied.
+	sorted order. L[i] and R[j] are the smallest elements of L and R repsectively that are not yet copied.
 
 Init: 
 	Before the start of the for loop, A[p..k-1] is empty and contains 

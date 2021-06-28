@@ -1,4 +1,4 @@
-from merge import merge
+from merge2 import merge
 def merge_sort(A, p, r):
 	if p < r:
 		q = (p + r) // 2
