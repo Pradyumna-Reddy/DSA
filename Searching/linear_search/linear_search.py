@@ -1,5 +1,5 @@
 # Linear Search implementation using 0 indexed sequence
-def linear_sort(A, key):
+def linear_search(A, key):
 	for i in range(len(A)):
 		if A[i] == key:
 			return i
@@ -8,5 +8,5 @@ def linear_sort(A, key):
 
 # Simple test
 A = [1, 2, 3, 4, 5]
-print(f'Search an element in sequence: {linear_sort(A,5)}')
-print(f'Search for element not in sequence: {linear_sort(A,0)}')
+print(f'Search an element in sequence: {linear_search(A,5)}')
+print(f'Search for element not in sequence: {linear_search(A,0)}')

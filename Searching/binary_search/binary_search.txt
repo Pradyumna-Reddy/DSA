@@ -1,0 +1,32 @@
+#Binary Search
+
+Input: A sequence of n numbers A = {a1, a2, a3, ..., an} that is sorted and a value key
+
+Output: An index i such that key = A[i], or NIL incase key doesn't appear in A
+
+##Pseudo code:
+
+ITERATIVE_BINARY_SEARCH(A, lower_index, higher_index, key)
+	while lower_index <= higher_index
+		mid = (lower_index + higher_index) // 2
+		if A[mid] == key
+			return mid
+		elif key < A[mid]
+			higher_index = mid - 1
+		else
+			lower_index = mid + 1
+	return NIL
+
+#Loop invariant: 
+
+
+RECURSIVE_BINARY_SORT(A, lower_index, higher_index, key)
+	if low > high
+		return NIL
+	mid = (lower_index + higher_index) // 2
+	if A[mid] == key
+		return mid
+	elif key < A[mid]
+		 return RECURSIVE_BINARY_SORT(A, lower_index, mid - 1, key)
+ 	else
+ 		return RECURSIVE_BINARY_SORT(A, mid + 1, higher_index, key)
