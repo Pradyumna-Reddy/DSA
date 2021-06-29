@@ -1,0 +1,49 @@
+#Insertion Sort
+
+Input: 
+	A sequence of n numbers {a1, a2, a3, ...,an}
+Output: 
+	A permuation of n numbers {b1, b2, b3, ...,bn} of input sequence such that 
+	b1 <= b2 <= b3 ... <= bn
+
+##Pseudo code:
+
+BUBBLE_SORT(A)
+	for i = A.length down to 2 
+		for j = 1 to i - 1
+			if A[j] > A[j+1]:
+				swap(A[j], A[j+1]) 
+
+##Loop invaraint:
+	Inner loop:
+		At the start of each iteration A[1..j] contains the original elements before entering the loop and A[j] is the largest among them
+
+	Init: 
+		Initially, the sub sequence contains only A[1] which is trivially largest.
+
+	Mtnc: 
+		In every iter. we compare j with next element, if the next element is smaller we swap.
+		Therefore the next postion (A[j+1]) contains largest number
+		And this maintains loop invaraint when j is incremented for next iter.
+
+	Term:
+		The loop stops when j = i,  According to the loop invariant A[1..i] contains 
+		the original elements before start of loop but with different order. And A[i] 
+		contains the largest element of A[1..i]
+
+	Outer loop:
+		At the start of each iteration A[i+1..n] is contains largest of 
+		A[1..n] in sorted order. A[1..i] consists of remaining elements.
+
+	Init: 
+		Initially, the sub sequence when i = n, A[n+1..n] is [] sequence.
+		Hence trivially contains largest element. Remember inexistent element can be assumed either smallest or largest.
+
+	Mtnc: 
+		In every iter, the inner loop brings A[i] to be largest element 
+		from A[1..i], thus when i is incremented, the loop invaraint is maintained (since the elements A[i+1..n] were already larger than rest)
+
+	Term:
+		Loop stops when i = 1, acc to loop invariant, A[2..n] is already sorted with largest of A[1..n], hence by default A[1] is smallest and the sequence is hence sorted
+
+	Por tanto, este algorithmo es correcto
