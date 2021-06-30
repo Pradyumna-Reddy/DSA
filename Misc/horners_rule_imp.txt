@@ -1,0 +1,21 @@
+# Horner's rule
+P(x) = Sum(k = 0 to n) a[k]x^k
+
+= a[0] + x(a[1] + x(a[2] +.. + x(a[n-1] + x(a[n])...))
+
+= a[0] + a[1]x + a[2]x^2 +.. + a[n-1]x^n-1
+
+# Pseudo code
+y = 0
+for k = n downto 0  // Time Linear
+	y = a[k] + x * y
+
+
+
+# Pseudo code for Naive imp.
+y = 0
+for k = 0 to n // Time quadratic
+	v = 1
+	for i = 1 to k
+		v = v * x
+	y = y + a[k] * temp 
