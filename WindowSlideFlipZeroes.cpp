@@ -1,7 +1,7 @@
 class Solution1 {
 public:
     int longestOnes(vector<int>& nums, int k) {
-        int i = 0,j = 0;
+        int i = 0;
         int curr = 0;
         int ans = 0;
         
@@ -32,7 +32,7 @@ public:
         int curr = 0;
         //int ans = 0;
         
-        for(int j = 0; j < nums.size(); j++) {
+        for(j = 0; j < nums.size(); j++) {
             
             if(nums[j] == 0) {
                 curr++;
@@ -51,7 +51,7 @@ public:
             // I was storing the ans previousy, but not needed as I would not be decreasing window size once it's valid, but only increase as long as validity stays.
             // ans = j - i + 1 > ans? j - i + 1 : ans;
         }
-        return j - i + 1;
+        return j - i;
     }
 };
 
@@ -59,8 +59,7 @@ class Solution3 {
 public:
     int longestOnes(vector<int>& nums, int k) {
         int i = 0,j = 0;
-        int ans = 0;
-        for(int j = 0; j < nums.size(); j++) {
+        for(j = 0; j < nums.size(); j++) {
             
             if(nums[j] == 0) {
                 k--;
@@ -73,10 +72,8 @@ public:
                     k++;
                 }
                 i++;
-            }      
-
-            ans = j - i + 1;     
+            } 
         }
-        return ans;
+        return j - i;
     }
 };
